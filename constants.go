@@ -1,5 +1,9 @@
 package cregis
 
+const SuccessCode = "00000"
+
+const SuccessWebhookResponse = "success"
+
 type TransactionStatus int
 
 const (
