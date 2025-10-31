@@ -58,7 +58,7 @@ func (a *API) Coins() (*Result[Coins], error) {
 	return &r, nil
 }
 
-func (a *API) Trades(opts ...Option) (*Result[Page[[]Trade]], error) {
+func (a *API) Transactions(opts ...Option) (*Result[Page[[]Transaction]], error) {
 	mp := make(map[string]any)
 	mp["pid"] = a.pid
 	for _, opt := range opts {
@@ -68,7 +68,7 @@ func (a *API) Trades(opts ...Option) (*Result[Page[[]Trade]], error) {
 	if err != nil {
 		return nil, err
 	}
-	r := Result[Page[[]Trade]]{}
+	r := Result[Page[[]Transaction]]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
 		return nil, err
