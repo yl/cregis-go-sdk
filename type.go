@@ -1,4 +1,4 @@
-package cregis_sdk_go
+package cregis
 
 type Result[T any] struct {
 	Code string `json:"code"`
@@ -6,90 +6,85 @@ type Result[T any] struct {
 	Data T      `json:"data"`
 }
 
-type AddressLegal struct {
-	/**
-	 * 地址是否合法
-	 */
-	Result bool `json:"result"`
+type Page[T any] struct {
+	Total    int64 `json:"total"`
+	PageNum  int64 `json:"page_num"`
+	PageSize int64 `json:"page_size"`
+	Rows     T     `json:"rows"`
 }
 
-type AddressInner struct {
-	/**
-	 * 地址是否合法
-	 */
-	Result bool `json:"result"`
-}
-
-type ProjectCoin struct {
+type Coin struct {
 	CoinName string `json:"coin_name"`
 	ChainId  string `json:"chain_id"`
 	TokenId  string `json:"token_id"`
 }
 
-type ProjectCoins struct {
-	PayoutCoins  []*ProjectCoin `json:"payout_coins"`
-	AddressCoins []*ProjectCoin `json:"address_coins"`
-	OrderCoins   []*ProjectCoin `json:"order_coins"`
+type Coins struct {
+	PayoutCoins  []*Coin `json:"payout_coins"`
+	AddressCoins []*Coin `json:"address_coins"`
+	OrderCoins   []*Coin `json:"order_coins"`
+}
+
+type Trade struct {
+	Pid         int64  `json:"pid"`
+	Cid         int64  `json:"cid"`
+	ChainId     string `json:"chain_id"`
+	TokenId     string `json:"token_id"`
+	Currency    string `json:"currency"`
+	FromAddress string `json:"from_address"`
+	ToAddress   string `json:"to_address"`
+	Amount      string `json:"amount"`
+	Status      int    `json:"status"`
+	TxId        string `json:"txid"`
+	BlockHeight string `json:"block_height"`
+	BlockTime   int64  `json:"block_time"`
+	Fee         string `json:"fee"`
+}
+
+type AddressLegal struct {
+	Result bool `json:"result"`
+}
+
+type AddressInner struct {
+	Result bool `json:"result"`
+}
+
+type Collection struct {
+	Cid int64 `json:"cid"`
 }
 
 type Payout struct {
-	/**
-	 * 转出订单编号
-	 */
 	Cid int64 `json:"cid"`
 }
 
 type PayoutQuery struct {
-	/**
-	 * 项目编号
-	 */
-	Pid int64 `json:"pid"`
-	/**
-	 * 地址
-	 */
-	Address string `json:"address"`
-	/**
-	 * 链编号
-	 */
-	ChainId string `json:"chain_id"`
-	/**
-	 * 代币编号
-	 */
-	TokenId string `json:"token_id"`
-	/**
-	 * 币种标识
-	 */
-	Currency string `json:"currency"`
-	/**
-	 * 金额
-	 */
-	Amount string `json:"amount"`
-	/**
-	 * 调用方业务编号
-	 */
+	Pid          int64  `json:"pid"`
+	Address      string `json:"address"`
+	ChainId      string `json:"chain_id"`
+	TokenId      string `json:"token_id"`
+	Currency     string `json:"currency"`
+	Amount       string `json:"amount"`
 	ThirdPartyId string `json:"third_party_id"`
-	/**
-	 * 备注
-	 */
-	Remark string `json:"remark"`
-	/**
-	 * 状态
-	 */
-	Status int `json:"status"`
-	/**
-	 * 交易哈希
-	 */
-	TxId string `json:"txid"`
-	/**
-	 * 区块高度
-	 */
-	BlockHeight string `json:"block_height"`
-	/**
-	 * 区块时间
-	 */
-	BlockTime string `json:"block_time"`
+	Remark       string `json:"remark"`
+	Status       int    `json:"status"`
+	TxId         string `json:"txid"`
+	BlockHeight  string `json:"block_height"`
+	BlockTime    string `json:"block_time"`
 }
 
-type ProjectAddress struct {
+type Address struct {
 	Address string `json:"address"`
+}
+
+type SubAddressBalance struct {
+	Pid        int64  `json:"pid"`
+	Address    string `json:"address"`
+	Currency   string `json:"currency"`
+	Total      string `json:"total"`
+	Available  string `json:"available"`
+	Processing string `json:"processing"`
+}
+
+type SubAddressWithdrawal struct {
+	Cid int64 `json:"cid"`
 }

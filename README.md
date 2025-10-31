@@ -13,7 +13,7 @@ The sdk of cregis by golang is used to cregis server
 With [Go module](https://github.com/golang/go/wiki/Modules) support, simply add the following import
 
 ```
-import "github.com/0xcregis/cregis-go-sdk"
+import "github.com/yl/cregis-go-sdk"
 ```
 
 to your code, and then `go [build|run|test]` will automatically fetch the necessary dependencies.
@@ -21,7 +21,7 @@ to your code, and then `go [build|run|test]` will automatically fetch the necess
 Otherwise, run the following Go command to install the `sdk` package:
 
 ```sh
-$ go get -u github.com/0xcregis/cregis-go-sdk
+$ go get -u github.com/yl/cregis-go-sdk
 ```
 
 ### Using SDK
@@ -34,7 +34,7 @@ package main
 import (
 	"fmt"
 
-	sdk "github.com/0xcregis/cregis-go-sdk"
+	sdk "github.com/yl/cregis-go-sdk"
 )
 
 func main() {
@@ -48,10 +48,6 @@ func main() {
 }
 
 ```
-
-### Learn more examples
-
-Learn and practice more examples, please read the [Test Case](https://github.com/0xcregis/cregis-go-sdk/blob/main/api_test.go) .
 
 ## Documentation
 
