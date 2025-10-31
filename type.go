@@ -90,57 +90,57 @@ type SubAddressWithdrawal struct {
 }
 
 type DepositCallback struct {
-	Pid         int64             `json:"pid"`
-	Cid         int64             `json:"cid"`
-	ChainId     string            `json:"chain_id"`
-	TokenId     string            `json:"token_id"`
-	Currency    string            `json:"currency"`
-	Address     string            `json:"address"`
-	Amount      string            `json:"amount"`
-	Status      TransactionStatus `json:"status"`
-	TxId        string            `json:"txid"`
-	BlockHeight string            `json:"block_height"`
-	BlockTime   int64             `json:"block_time"`
-	Nonce       string            `json:"nonce"`
-	Timestamp   int64             `json:"timestamp"`
-	Sign        string            `json:"sign"`
+	Pid         int64             `json:"pid" mapstructure:"pid"`
+	Cid         int64             `json:"cid" mapstructure:"cid"`
+	ChainId     string            `json:"chain_id" mapstructure:"chain_id"`
+	TokenId     string            `json:"token_id" mapstructure:"token_id"`
+	Currency    string            `json:"currency" mapstructure:"currency"`
+	Address     string            `json:"address" mapstructure:"address"`
+	Amount      string            `json:"amount" mapstructure:"amount"`
+	Status      TransactionStatus `json:"status" mapstructure:"status"`
+	TxId        string            `json:"txid" mapstructure:"txid"`
+	BlockHeight string            `json:"block_height" mapstructure:"block_height"`
+	BlockTime   int64             `json:"block_time" mapstructure:"block_time"`
+	Nonce       string            `json:"nonce" mapstructure:"nonce"`
+	Timestamp   int64             `json:"timestamp" mapstructure:"timestamp"`
+	Sign        string            `json:"sign" mapstructure:"-"`
 }
 
 type WithdrawalCallback struct {
-	Pid          int64            `json:"pid"`
-	Cid          int64            `json:"cid"`
-	ChainId      string           `json:"chain_id"`
-	TokenId      string           `json:"token_id"`
-	Currency     string           `json:"currency"`
-	Address      string           `json:"address"`
-	Amount       string           `json:"amount"`
-	ThirdPartyId string           `json:"third_party_id"`
-	Remark       string           `json:"remark"`
-	Status       WithdrawalStatus `json:"status"`
-	TxId         string           `json:"txid"`
-	BlockHeight  string           `json:"block_height"`
-	BlockTime    int64            `json:"block_time"`
-	Nonce        string           `json:"nonce"`
-	Timestamp    int64            `json:"timestamp"`
-	Sign         string           `json:"sign"`
+	Pid          int64            `json:"pid" mapstructure:"pid"`
+	Cid          int64            `json:"cid" mapstructure:"cid"`
+	ChainId      string           `json:"chain_id" mapstructure:"chain_id"`
+	TokenId      string           `json:"token_id" mapstructure:"token_id"`
+	Currency     string           `json:"currency" mapstructure:"currency"`
+	Address      string           `json:"address" mapstructure:"address"`
+	Amount       string           `json:"amount" mapstructure:"amount"`
+	ThirdPartyId string           `json:"third_party_id" mapstructure:"third_party_id"`
+	Remark       string           `json:"remark" mapstructure:"remark"`
+	Status       WithdrawalStatus `json:"status" mapstructure:"status"`
+	TxId         string           `json:"txid" mapstructure:"txid"`
+	BlockHeight  string           `json:"block_height" mapstructure:"block_height"`
+	BlockTime    int64            `json:"block_time" mapstructure:"block_time"`
+	Nonce        string           `json:"nonce" mapstructure:"nonce"`
+	Timestamp    int64            `json:"timestamp" mapstructure:"timestamp"`
+	Sign         string           `json:"sign" mapstructure:"-"`
 }
 
 type SubAddressWithdrawalCallback struct {
-	Pid          int64            `json:"pid"`
-	Cid          int64            `json:"cid"`
-	ChainId      string           `json:"chain_id"`
-	TokenId      string           `json:"token_id"`
-	Currency     string           `json:"currency"`
-	FromAddress  string           `json:"from_address"`
-	ToAddress    string           `json:"to_address"`
-	Amount       string           `json:"amount"`
-	ThirdPartyId string           `json:"third_party_id"`
-	Remark       string           `json:"remark"`
-	Status       WithdrawalStatus `json:"status"`
-	TxId         string           `json:"txid"`
-	BlockHeight  string           `json:"block_height"`
-	BlockTime    int64            `json:"block_time"`
-	Nonce        string           `json:"nonce"`
-	Timestamp    int64            `json:"timestamp"`
-	Sign         string           `json:"sign"`
+	Pid          int64            `json:"pid" mapstructure:"pid"`
+	Cid          int64            `json:"cid" mapstructure:"cid"`
+	ChainId      string           `json:"chain_id" mapstructure:"chain_id"`
+	TokenId      string           `json:"token_id" mapstructure:"token_id"`
+	Currency     string           `json:"currency" mapstructure:"currency"`
+	FromAddress  string           `json:"from_address" mapstructure:"from_address"`
+	ToAddress    string           `json:"to_address" mapstructure:"to_address"`
+	Amount       string           `json:"amount" mapstructure:"amount"`
+	ThirdPartyId string           `json:"third_party_id" mapstructure:"third_party_id"`
+	Remark       string           `json:"remark" mapstructure:"remark"`
+	Status       WithdrawalStatus `json:"status" mapstructure:"status"`
+	TxId         string           `json:"txid" mapstructure:"txid"`
+	BlockHeight  string           `json:"block_height" mapstructure:"block_height"`
+	BlockTime    int64            `json:"block_time" mapstructure:"block_time"`
+	Nonce        string           `json:"nonce" mapstructure:"nonce"`
+	Timestamp    int64            `json:"timestamp" mapstructure:"timestamp"`
+	Sign         string           `json:"sign" mapstructure:"-"`
 }
