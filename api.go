@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"strings"
 	"time"
-
-	"github.com/tidwall/gjson"
 )
 
 const (
@@ -330,7 +328,11 @@ func (a *API) send(url string, params map[string]any) (string, error) {
 		return "", err
 	}
 
-	if !gjson.ParseBytes(r).Get("code").Exists() {
+	var tmp map[string]any
+	if err := json.Unmarshal(r, &tmp); err != nil {
+		return "", fmt.Errorf("%v", string(r))
+	}
+	if _, ok := tmp["code"]; !ok {
 		return "", fmt.Errorf("%v", string(r))
 	}
 	return string(r), nil
