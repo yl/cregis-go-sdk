@@ -69,7 +69,7 @@ type PayoutQuery struct {
 	Status       WithdrawalStatus `json:"status"`
 	TxId         string           `json:"txid"`
 	BlockHeight  string           `json:"block_height"`
-	BlockTime    string           `json:"block_time"`
+	BlockTime    int64            `json:"block_time"`
 }
 
 type Address struct {
