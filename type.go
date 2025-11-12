@@ -83,6 +83,9 @@ func (b *BlockTime) UnmarshalJSON(bytes []byte) error {
 		return err
 	}
 	switch v := field.(type) {
+	case nil:
+		*b = 0
+		return nil
 	case string:
 		n, err := strconv.Atoi(v)
 		if err != nil {
