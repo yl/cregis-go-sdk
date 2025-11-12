@@ -46,12 +46,12 @@ func (a *API) Coins() (*Result[Coins], error) {
 	mp["pid"] = a.pid
 	resp, err := a.send(a.url+CoinsURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Coins]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -64,12 +64,12 @@ func (a *API) Transactions(opts ...Option) (*Result[Page[[]Transaction]], error)
 	}
 	resp, err := a.send(a.url+TradeURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Page[[]Transaction]]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -83,12 +83,12 @@ func (a *API) AddressCreate(chainId string, opts ...Option) (*Result[Address], e
 	}
 	resp, err := a.send(a.url+AddressCreateURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Address]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -103,12 +103,12 @@ func (a *API) AddressBatchCreate(chainId, number string, opts ...Option) (*Resul
 	}
 	resp, err := a.send(a.url+AddressBatchCreateURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Address]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -120,12 +120,12 @@ func (a *API) AddressInner(chainId, address string) (*Result[AddressInner], erro
 	mp["chain_id"] = chainId
 	resp, err := a.send(a.url+AddressInnerURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[AddressInner]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -137,12 +137,12 @@ func (a *API) AddressLegal(chainId, address string) (*Result[AddressLegal], erro
 	mp["chain_id"] = chainId
 	resp, err := a.send(a.url+AddressLegalURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[AddressLegal]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -156,12 +156,12 @@ func (a *API) AddressUpdate(address string, opts ...Option) (*Result[any], error
 	}
 	resp, err := a.send(a.url+AddressUpdateURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[any]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -177,12 +177,12 @@ func (a *API) Collection(currency, fromAddress, toAddress string, opts ...Option
 	}
 	resp, err := a.send(a.url+CollectionURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Collection]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -199,12 +199,12 @@ func (a *API) Payout(currency, address, amount, thirdPartyId string, opts ...Opt
 	}
 	resp, err := a.send(a.url+PayoutURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Payout]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -221,12 +221,12 @@ func (a *API) PayoutV2(currency, toAddress, amount, thirdPartyId string, opts ..
 	}
 	resp, err := a.send(a.url+PayoutV2URI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Payout]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -237,12 +237,12 @@ func (a *API) PayoutQuery(cid int64) (*Result[PayoutQuery], error) {
 	mp["cid"] = cid
 	resp, err := a.send(a.url+payoutQueryURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[PayoutQuery]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -256,12 +256,12 @@ func (a *API) SubAddressBalance(currency string, opts ...Option) (*Result[Page[S
 	}
 	resp, err := a.send(a.url+SubAddressBalanceURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[Page[SubAddressBalance]]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -278,12 +278,12 @@ func (a *API) SubAddressWithdrawal(currency, toAddress, amount, thirdPartyId str
 	}
 	resp, err := a.send(a.url+SubAddressWithdrawalURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[SubAddressWithdrawal]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -294,12 +294,12 @@ func (a *API) SubAddressWithdrawalTrade(cid int64) (*Result[PayoutQuery], error)
 	mp["cid"] = cid
 	resp, err := a.send(a.url+SubAddressWithdrawalTradeURI, mp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	r := Result[PayoutQuery]{}
 	err = json.Unmarshal([]byte(resp), &r)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json unmarshal error: %v resp: %v", err, resp)
 	}
 	return &r, nil
 }
@@ -310,13 +310,13 @@ func (a *API) send(url string, params map[string]any) (string, error) {
 	params["sign"] = Sign(params, a.apiKey)
 	payload, _ := json.Marshal(params)
 	body := strings.NewReader(string(payload))
-	client := &http.Client{}
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
 		return "", err
 	}
 	req.Header.Add("Content-Type", "application/json")
 
+	client := &http.Client{}
 	res, err := client.Do(req)
 	if err != nil {
 		return "", err

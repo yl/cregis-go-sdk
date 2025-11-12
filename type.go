@@ -157,16 +157,18 @@ type Payout struct {
 type PayoutQuery struct {
 	Pid          int64            `json:"pid"`
 	Address      string           `json:"address"`
+	FromAddress  string           `json:"from_address"`
 	ChainId      string           `json:"chain_id"`
 	TokenId      string           `json:"token_id"`
 	Currency     string           `json:"currency"`
 	Amount       string           `json:"amount"`
 	ThirdPartyId string           `json:"third_party_id"`
 	Remark       string           `json:"remark"`
-	Status       WithdrawalStatus `json:"status"`
 	TxId         string           `json:"txid"`
-	BlockHeight  string           `json:"block_height"`
 	BlockTime    BlockTime        `json:"block_time"`
+	BlockHeight  string           `json:"block_height"`
+	Memo         string           `json:"memo"`
+	Status       WithdrawalStatus `json:"status"`
 }
 
 type Address struct {
