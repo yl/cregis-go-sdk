@@ -203,6 +203,7 @@ type DepositCallback struct {
 	TxId        string            `json:"txid"`
 	BlockHeight string            `json:"block_height"`
 	BlockTime   BlockTime         `json:"block_time"`
+	Memo        string            `json:"memo"`
 	Nonce       string            `json:"nonce"`
 	Timestamp   int64             `json:"timestamp"`
 	Sign        string            `json:"sign"`
@@ -222,6 +223,7 @@ type WithdrawalCallback struct {
 	TxId         string           `json:"txid"`
 	BlockHeight  string           `json:"block_height"`
 	BlockTime    BlockTime        `json:"block_time"`
+	Memo         string           `json:"memo"`
 	Nonce        string           `json:"nonce"`
 	Timestamp    int64            `json:"timestamp"`
 	Sign         string           `json:"sign"`
