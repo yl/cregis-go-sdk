@@ -15,6 +15,8 @@ func Sign(data map[string]any, apiKey string) string {
 		switch v.(type) {
 		case float64:
 			s = strconv.FormatFloat(v.(float64), 'f', -1, 64)
+		case int, int64:
+			s = strconv.FormatInt(v.(int64), 10)
 		default:
 			s = fmt.Sprintf("%s", v)
 		}
