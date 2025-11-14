@@ -4,13 +4,21 @@ import (
 	"crypto/md5"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 )
 
 func Sign(data map[string]any, apiKey string) string {
 	m := make(map[string]any, len(data))
 	for k, v := range data {
-		s := fmt.Sprintf("%s", v)
+		var s string
+		switch v.(type) {
+		case float64:
+			s = strconv.FormatFloat(v.(float64), 'f', -1, 64)
+		default:
+			s = fmt.Sprintf("%s", v)
+		}
+
 		//not null
 		if len(s) < 1 {
 			continue
@@ -21,7 +29,7 @@ func Sign(data map[string]any, apiKey string) string {
 			continue
 		}
 
-		m[k] = v
+		m[k] = s
 	}
 
 	sortStr := paramsAsciiAsc(m)
