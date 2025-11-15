@@ -117,6 +117,7 @@ type Coin struct {
 	CoinName string `json:"coin_name"`
 	ChainId  string `json:"chain_id"`
 	TokenId  string `json:"token_id"`
+	Decimals string `json:"decimals"`
 }
 
 type Coins struct {
