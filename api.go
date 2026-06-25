@@ -304,6 +304,8 @@ func (a *API) SubAddressWithdrawalTrade(cid int64) (*Result[PayoutQuery], error)
 	return &r, nil
 }
 
+var httpClient = &http.Client{Timeout: 10 * time.Second}
+
 func (a *API) send(url string, params map[string]any) (string, error) {
 	params["timestamp"] = time.Now().UnixMilli()
 	params["nonce"] = generateRandomString(6)
@@ -316,8 +318,7 @@ func (a *API) send(url string, params map[string]any) (string, error) {
 	}
 	req.Header.Add("Content-Type", "application/json")
 
-	client := &http.Client{}
-	res, err := client.Do(req)
+	res, err := httpClient.Do(req)
 	if err != nil {
 		return "", err
 	}
